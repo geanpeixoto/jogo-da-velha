@@ -1,0 +1,25 @@
+{
+  "name": "jogo-da-velha",
+  "version": "0.0.1",
+  "description": "Segundo trabalho de Inteligência Artificial (2015)",
+  "main": " ",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/geanpeixoto/jogo-da-velha.git"
+  },
+  "author": "Gean Carlo Peixoto <geancpeixoto@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/geanpeixoto/jogo-da-velha/issues"
+  },
+  "homepage": "https://github.com/geanpeixoto/jogo-da-velha#readme",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-connect": "^2.2.0",
+    "gulp-sass": "^2.0.4"
+  }
+}
