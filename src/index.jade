@@ -6,8 +6,26 @@ html
     link(rel="stylesheet",href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700")
     link(rel="stylesheet",href="styles.css")
   body(ng-app="jdv", ng-strict-di)
-    main(class="mdl-card mdl-shadow--2dp jdv-main")
-      p {{1+1}}
+    main(class="jdv-main", ng-controller="JdvController as that")
+      div(class="mdl-card mdl-shadow--2dp jdv-board")
+        div(ng-repeat="row in that.data", class="jdv-board-row")
+          div(ng-repeat="value in row track by $index",
+            class="jdv-board-item", 
+            ng-switch,
+            on="value"
+          )
+            div(ng-switch-default)
+              span
+                {{value}}
+            button(ng-switch-when="null",
+              class="mdl-button mdl-js-button mdl-js-ripple-effect",
+              ng-click="that.onClick($parent.$parent.$index, $parent.$index)",
+            )
+      div(class="jdv-actions")
+        button(class="mdl-button mdl-js-button mdl-js-ripple-effect",
+          ng-click="that.reset()").
+          Reiniciar
+          
     script(src="vendor/material-design-lite/material.min.js")
     script(src="vendor/angular/angular.min.js")
     script(src="all.js")
