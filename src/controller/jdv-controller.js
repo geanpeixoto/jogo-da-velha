@@ -2,28 +2,28 @@
   'use strict';
 
   angular.module('jdv')
-    .controller('JdvController', Controller);
+    .controller('JdvController', ['BoardService', Controller]);
 
-  function Controller() {
-    this.gridSize = 3;
-    this.data = [];
-
-    this.reset = reset;
+  function Controller(board) {
+    this.player1 = false;
+    this.board = board;
     this.onClick = onClick;
-
-    this.reset();
   }
 
   function onClick(row, column) {
-    this.data[row][column] = 'X';
-    this.data[column][row] = 'O';
+    var player = this.player1 ? 'X' : 'O';
+    this.player1 = !this.player1;
+
+    this.board.play(player, row, column);
+
+    if ( this.board.itsOver ) {
+      if ( this.board.winner )
+        console.log("O jogador " + this.board.winner + " venceu");
+      else
+        console.log("O jogo terminou empatado");
+    }
+
+
   }
 
-  function reset() {
-    for ( var i=0; i<this.gridSize; i++ ) {
-      this.data[i] = [];
-      for ( var j=0; j<this.gridSize; j++ )
-        this.data[i][j] = null;
-    }
-  }
 })(angular);

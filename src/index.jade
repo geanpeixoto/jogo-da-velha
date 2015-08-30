@@ -8,7 +8,7 @@ html
   body(ng-app="jdv", ng-strict-di)
     main(class="jdv-main", ng-controller="JdvController as that")
       div(class="mdl-card mdl-shadow--2dp jdv-board")
-        div(ng-repeat="row in that.data", class="jdv-board-row")
+        div(ng-repeat="row in that.board.data", class="jdv-board-row")
           div(ng-repeat="value in row track by $index",
             class="jdv-board-item", 
             ng-switch,
@@ -18,12 +18,14 @@ html
               span
                 {{value}}
             button(ng-switch-when="null",
+              ng-disabled="that.board.itsOver"
               class="mdl-button mdl-js-button mdl-js-ripple-effect",
               ng-click="that.onClick($parent.$parent.$index, $parent.$index)",
             )
       div(class="jdv-actions")
         button(class="mdl-button mdl-js-button mdl-js-ripple-effect",
-          ng-click="that.reset()").
+          ng-click="that.board.reset()"
+        ).
           Reiniciar
           
     script(src="vendor/material-design-lite/material.min.js")
