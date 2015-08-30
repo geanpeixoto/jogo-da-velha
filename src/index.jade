@@ -15,8 +15,7 @@ html
             on="value"
           )
             div(ng-switch-default)
-              span
-                {{value}}
+              span {{value}}
             button(ng-switch-when="null",
               ng-disabled="that.board.itsOver"
               class="mdl-button mdl-js-button mdl-js-ripple-effect",
@@ -24,7 +23,7 @@ html
             )
       div(class="jdv-actions")
         button(class="mdl-button mdl-js-button mdl-js-ripple-effect",
-          ng-click="that.board.reset()"
+          ng-click="that.reset()"
         ).
           Reiniciar
           

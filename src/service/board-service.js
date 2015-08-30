@@ -4,17 +4,16 @@
 
   function Service() {
     this.gridSize = 3;
-    this.data = null;
 
-    this.play = play;
-    this.isWinner = isWinner;
-    this.reset = reset;
-    this.isTied = isTied;
+    this.count = 0;
+    this.data = null;
+    this.itsOver = false;
+    this.winner = null;
 
     this.reset();
   }
 
-  function isTied() {
+  Service.prototype.isTied = function() {
     for ( var i=0; i<this.gridSize; i++ ) {
       for ( var j=0; j<this.gridSize; j++ ) {
         if ( !this.data[i][j] )
@@ -24,8 +23,7 @@
     return true;
   }
 
-  function isWinner(player) {
-
+  Service.prototype.isWinner = function(player) {
     function byRow(player, data, gridSize) {
       rows: for ( var i=0; i<gridSize; i++ ) {
         for ( var j=0; j<gridSize; j++ ) {
@@ -36,7 +34,6 @@
       }
       return false;
     }
-
     function byColumn(player, data, gridSize) {
       columns: for ( var j=0; j<gridSize; j++ ) {
         for( var i=0; i<gridSize; i++ ) {
@@ -47,7 +44,6 @@
       }
       return false;
     }
-
     function byDiagonal(player, data, gridSize) {
       var primmary = (function() {
         for ( var i = 0; i < gridSize; i++ ) {
@@ -65,15 +61,14 @@
       })();
       return primmary || secundary;
     }
-
     return byRow(player, this.data, this.gridSize)
             || byColumn(player, this.data, this.gridSize)
             || byDiagonal(player, this.data, this.gridSize);
   }
 
-  function play(player, row, column) {
+  Service.prototype.set = function(row, column, player) {
     this.data[row][column] = player;
-
+    this.count++;
     if ( this.isWinner(player) ) {
       this.itsOver = true;
       this.winner = player;
@@ -84,10 +79,11 @@
     }
   }
 
-  function reset() {
+  Service.prototype.reset = function() {
     this.data = [];
     this.winner = null;
     this.itsOver = false;
+    this.count = 0;
     for ( var i=0; i<this.gridSize; i++ ) {
       this.data[i] = [];
       for ( var j=0; j<this.gridSize; j++ )
