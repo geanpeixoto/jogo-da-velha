@@ -10,6 +10,13 @@ html > body {
   transform: translate(-50%, -50%);
 }
 
+.jdv-notification {
+  font-size: 24px;
+  padding: 8px;
+  height: 24px + 16px;
+  text-align: center;
+}
+
 .jdv-board {
   padding: 32px;
   width: 320px;
@@ -52,11 +59,10 @@ html > body {
 }
 
 .jdv-actions {
-  padding: 32px;
+  padding: 8px 32px;
 
-  button {
+  & > * {
     display: block;
-    font-size: 2em;
-    margin: 0 auto;
+    margin: 8px auto;
   }
 }

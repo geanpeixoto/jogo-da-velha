@@ -69,19 +69,20 @@
         for ( var i = 0; i < gridSize; i++ ) {
           if ( data[i][i] !== player )
             if ( !empty && !data[i][i] )
-              empty = [i, j];
+              empty = [i, i];
             else
               return null;
         }
         return empty;
       })();
       var secundary = (function() {
+        var empty = null;
         for ( var i = 0; i < gridSize; i++ ) {
           if ( data[gridSize-(i+1)][i] !== player )
-          if ( !empty && !data[gridSize-(i+1)][i] )
-            empty = [i, j];
-          else
-            return false;
+            if ( !empty && !data[gridSize-(i+1)][i] )
+              empty = [gridSize-(i+1), i];
+            else
+              return null;
         }
         return empty;
       })();

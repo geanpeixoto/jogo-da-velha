@@ -6,8 +6,8 @@
     this.gridSize = 3;
 
     this.count = 0;
-    this.data = null;
     this.itsOver = false;
+    this.data = null;
     this.winner = null;
 
     this.reset();

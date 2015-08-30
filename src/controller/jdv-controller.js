@@ -10,26 +10,19 @@
 
     this.onClick = onClick;
     this.reset = reset;
+    this.aiFirst = true;
 
     this.reset();
   }
 
   function onClick(row, column) {
     this.board.set(row, column, 'X');
-
-    if ( this.board.itsOver ) {
-      if ( this.board.winner )
-        console.log("O jogador " + this.board.winner + " venceu");
-      else
-        console.log("O jogo terminou empatado");
-    } else {
-      this.ai.next();
-    }
+    !this.board.itsOver && this.ai.next();
   }
 
   function reset() {
     this.board.reset();
-    this.ai.next();
+    this.aiFirst && this.ai.next();
   }
 
 })(angular);

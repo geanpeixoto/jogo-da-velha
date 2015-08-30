@@ -2,11 +2,18 @@ doctype html
 html
   head
     title Jogo da velha
-    link(rel="stylesheet",href="vendor/material-design-lite/material.min.css")
-    link(rel="stylesheet",href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700")
-    link(rel="stylesheet",href="styles.css")
+    meta(name="viewport", content="width=device-width")
+    link(rel="stylesheet", href="vendor/material-design-lite/material.min.css")
+    link(rel="stylesheet", href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700")
+    link(rel="stylesheet", href="styles.css")
   body(ng-app="jdv", ng-strict-di)
     main(class="jdv-main", ng-controller="JdvController as that")
+      div(class="jdv-notification") 
+        div(ng-if="that.board.itsOver")
+          span(ng-if="that.board.winner").
+            "{{that.board.winner}}" venceu
+          span(ng-if="!that.board.winner").
+            O jogo terminou empatado
       div(class="mdl-card mdl-shadow--2dp jdv-board")
         div(ng-repeat="row in that.board.data", class="jdv-board-row")
           div(ng-repeat="value in row track by $index",
@@ -22,6 +29,11 @@ html
               ng-click="that.onClick($parent.$parent.$index, $parent.$index)",
             )
       div(class="jdv-actions")
+        div
+          label(class="mdl-switch mdl-js-switch mdl-js-ripple-effect", for="ia-switch")
+            input(type="checkbox", id="ia-switch", class="mdl-switch__input", ng-model="that.aiFirst")
+            span(class="mdl-switch__label") Iniciar pelo computador
+              
         button(class="mdl-button mdl-js-button mdl-js-ripple-effect",
           ng-click="that.reset()"
         ).
