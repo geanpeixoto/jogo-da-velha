@@ -1,3 +1,4 @@
-"use strict";
-
-angular.module("jdv", []);
+(function(angular){
+  "use strict";
+  angular.module("jdv", []);
+})(angular);
