@@ -12,6 +12,7 @@ var dest = 'build';
 gulp.task('preview', function() {
   connect.server({
     root: dest,
+    port: args.port || 8080,
     livereload: true
   });
 });
