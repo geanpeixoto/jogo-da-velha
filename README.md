@@ -9,8 +9,10 @@ Felipe da Silva Inácio
 Para executar, abra o arquivo build/index.html no navegador
 
 ## Arquivos
-|- src		Códigos fonte
-'- build	Arquivos compilados
-   '-vendor	Bibliotecas de terceiros
+```
+|- src		   Códigos fonte
+'- build       Arquivos compilados
+   '-vendor	   Bibliotecas de terceiros
+```
 
 
